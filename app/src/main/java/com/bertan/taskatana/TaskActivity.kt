@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -68,6 +69,13 @@ class TaskActivity : AppCompatActivity() {
     }
   }
 
+  override fun onBackPressed() {
+    when (bottomView.visibility) {
+      View.VISIBLE -> closeBottomView()
+      else -> super.onBackPressed()
+    }
+  }
+
   private fun newTask() {
     openTask(null)
   }
@@ -80,14 +88,18 @@ class TaskActivity : AppCompatActivity() {
     editTextTask.setSelection(editTextTask.text.length)
 
     buttonSave.setOnClickListener {
-      val taskToSave = task ?: Task(UUID.randomUUID(), "", false, 0)
-
-      viewModel.setTask(taskToSave.copy(title = editTextTask.text.toString()))
-
-      fabAnim.hideBottomView()
-      editTextTask.text.clear()
-      hideKeyboard()
+      val text = editTextTask.text.toString().trim()
+      if(text.isNotEmpty()) {
+        viewModel.setTask(task?.copy(title = text) ?: Task(UUID.randomUUID(), text, false, 0))
+      }
+      closeBottomView()
     }
+  }
+
+  private fun closeBottomView() {
+    hideKeyboard()
+    fabAnim.hideBottomView()
+    editTextTask.text.clear()
   }
 
   private val updateTaskList: (List<Task>?) -> Unit = {
