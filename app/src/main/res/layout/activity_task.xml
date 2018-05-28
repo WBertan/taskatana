@@ -6,7 +6,6 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".TaskActivity">
-
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="0dp"
@@ -22,11 +21,48 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
     android:layout_marginEnd="16dp"
-    android:clickable="true"
     android:tint="@color/colorAccent"
     app:backgroundTint="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:rippleColor="@color/colorPrimaryDark"
     app:srcCompat="@android:drawable/ic_input_add"/>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/bottomView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorAccent"
+    android:minHeight="?attr/actionBarSize"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <EditText
+      android:id="@+id/editTextTask"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonSave"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:hint="@string/task_title_hint"
+      android:inputType="text"/>
+
+    <Button
+      android:id="@+id/buttonSave"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:text="@string/save"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+  </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

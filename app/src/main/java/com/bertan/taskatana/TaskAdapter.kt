@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.task_list_item.view.*
 
 class TaskAdapter(private val context: Context,
                   var items: List<Task>,
+                  private val onLongClick: (Task) -> Unit,
                   private val viewModel: TaskViewModel)
   : RecyclerView.Adapter<ViewHolder>() {
 
@@ -29,6 +30,10 @@ class TaskAdapter(private val context: Context,
     holder?.checkBox?.isChecked = task.completed
     holder?.checkBox?.setOnCheckedChangeListener { _, isChecked ->
       viewModel.setTask(task.copy(completed = isChecked))
+    }
+    holder?.checkBox?.setOnLongClickListener {
+      onLongClick(task)
+      true
     }
   }
 }
