@@ -21,7 +21,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
     android:layout_marginEnd="16dp"
-    android:tint="@color/colorAccent"
+    android:tint="@android:color/white"
     app:backgroundTint="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
     android:id="@+id/bottomView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorAccent"
+    android:background="@color/colorPrimaryLight"
     android:minHeight="?attr/actionBarSize"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent">
@@ -50,7 +50,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       android:hint="@string/task_title_hint"
-      android:inputType="text"/>
+      android:inputType="textMultiLine"/>
 
     <Button
       android:id="@+id/buttonSave"
@@ -60,6 +60,9 @@
       android:layout_marginBottom="8dp"
       android:layout_marginEnd="8dp"
       android:text="@string/save"
+      android:backgroundTint="@color/colorPrimary"
+      android:textColor="@android:color/white"
+      android:elevation="5dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
